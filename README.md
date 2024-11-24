@@ -1,6 +1,6 @@
 # Leetcode Practice
 Following Tech Interview Handbook's questions: https://www.techinterviewhandbook.org/best-practice-questions/
-## Week 1
+## Collection 1
 | Question                          | Difficulty | Finish Date | Status |
 |-----------------------------------|------------|-------------|--------|
 | Two Sum                           | Easy       | 2024-11-19  | ✔      |
