@@ -7,7 +7,7 @@ Following Tech Interview Handbook's questions: https://www.techinterviewhandbook
 | Contains Duplicate                | Easy       | 2024-11-20  | ✔      |
 | Best Time to Buy and Sell Stock   | Easy       | 2024-11-21  | ✔      |
 | Valid Anagram                     | Easy       | 2024-11-24  | ✔      |
-| Valid Parentheses                 | Easy       |             |        |
+| Valid Parentheses                 | Easy       | 2024-11-30  | ✔      |
 | Maximum Subarray                  | Easy       |             |        |
 | Product of Array Except Self      | Medium     |             |        |
 | 3Sum                              | Medium     |             |        |
