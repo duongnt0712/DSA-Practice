@@ -15,7 +15,7 @@ public class Dijkstra {
         Set<Node> unsettledNodes = new HashSet<>();
         unsettledNodes.add(source);
 
-        while (unsettledNodes.size() != 0) {
+        while (!unsettledNodes.isEmpty()) {
             Node currentNode = getLowestDistanceNode(unsettledNodes);
             unsettledNodes.remove(currentNode);
             for (Entry<Node, Integer> adjacencyPair : currentNode.getAdjacentNodes().entrySet()) {

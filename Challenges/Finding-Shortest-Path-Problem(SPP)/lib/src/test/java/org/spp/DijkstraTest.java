@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DijkstraTest {
+class DijkstraTest {
 
     @Test
-    public void testSPPSuccess() {
-
+    void testSPPSuccess() {
+        // Given nodes and distance
         Node nodeA = new Node("A");
         Node nodeB = new Node("B");
         Node nodeC = new Node("C");
@@ -58,30 +58,24 @@ public class DijkstraTest {
         graph.addNode(nodeG);
         graph.addNode(nodeH);
 
+        // When calculate the shortest path from node A
         graph = Dijkstra.calculateShortestPathFromSource(graph, nodeA);
 
-        List<Node> shortestPathForNodeB = List.of(nodeA);
-        List<Node> shortestPathForNodeC = List.of(nodeA, nodeB);
-        List<Node> shortestPathForNodeD = List.of(nodeA);
-        List<Node> shortestPathForNodeE = List.of(nodeA);
-        List<Node> shortestPathForNodeF = List.of(nodeA, nodeD);
-        List<Node> shortestPathForNodeG = List.of(nodeA, nodeD, nodeF);
-        List<Node> shortestPathForNodeH = List.of(nodeA, nodeD, nodeF);
-
+        // Then return the shortest path for each node
         Map<String, List<Node>> expectedShortestPaths = Map.of(
-                "B", shortestPathForNodeB,
-                "C", shortestPathForNodeC,
-                "D", shortestPathForNodeD,
-                "E", shortestPathForNodeE,
-                "F", shortestPathForNodeF,
-                "G", shortestPathForNodeG,
-                "H", shortestPathForNodeH
+                "B", List.of(nodeA),
+                "C", List.of(nodeA, nodeB),
+                "D", List.of(nodeA),
+                "E", List.of(nodeA),
+                "F", List.of(nodeA, nodeD),
+                "G", List.of(nodeA, nodeD, nodeF),
+                "H", List.of(nodeA, nodeD, nodeF)
         );
 
         for (Node node : graph.getNodes()) {
             List<Node> expectedPath = expectedShortestPaths.get(node.getName());
             if (expectedPath != null) {
-                assertTrue(node.getShortestPath().equals(expectedPath));
+                assertEquals(node.getShortestPath(),expectedPath);
             }
         }
     }
