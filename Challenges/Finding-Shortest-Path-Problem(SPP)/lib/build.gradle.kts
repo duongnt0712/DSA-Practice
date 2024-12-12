@@ -8,7 +8,10 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
+    id("io.freefair.lombok") version "8.10.2"
 }
+
+val lombokVersion = "1.18.30"
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -26,6 +29,11 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation(libs.guava)
+
+    compileOnly("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    testCompileOnly("org.projectlombok:lombok:$lombokVersion")
+    testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
