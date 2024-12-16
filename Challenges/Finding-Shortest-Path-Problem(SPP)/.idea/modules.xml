@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Finding-Shortest-Path-Problem(SPP).iml" filepath="$PROJECT_DIR$/.idea/Finding-Shortest-Path-Problem(SPP).iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/Finding-Shortest-Path-Problem(SPP).lib.main.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/Finding-Shortest-Path-Problem(SPP).lib.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/Finding-Shortest-Path-Problem(SPP).lib.test.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/Finding-Shortest-Path-Problem(SPP).lib.test.iml" />
     </modules>
