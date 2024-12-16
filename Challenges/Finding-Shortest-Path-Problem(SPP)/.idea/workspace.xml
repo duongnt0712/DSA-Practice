@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2121bc36-33dc-499f-9a75-7b4891aadbe4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Dijkstra.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Dijkstra.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/main/java/org/spp/Dijkstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/main/java/org/spp/Dijkstra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/main/java/org/spp/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/main/java/org/spp/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/main/java/org/spp/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/main/java/org/spp/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/test/java/org/spp/DijkstraTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/test/java/org/spp/DijkstraTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,18 +64,22 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.DijkstraTest.testSPP.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DijkstraTest.testSPPSuccess.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DijkstraTest.whenSPPSolved_thenCorrect.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.DijkstraTest.executor": "Run",
+    "Gradle.DijkstraTest.testNoPathAvailable.executor": "Run",
+    "Gradle.DijkstraTest.testPathToUnreachableNode.executor": "Run",
+    "Gradle.DijkstraTest.testSPP.executor": "Run",
+    "Gradle.DijkstraTest.testSPPSuccess.executor": "Run",
+    "Gradle.DijkstraTest.testShortestPath.executor": "Debug",
+    "Gradle.DijkstraTest.whenSPPSolved_thenCorrect.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "improvement-vector",
+    "kotlin-language-version-configured": "true"
   }
-}</component>
-  <component name="RunManager" selected="Gradle.DijkstraTest.testSPPSuccess">
-    <configuration name="DijkstraTest.testSPP" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+}]]></component>
+  <component name="RunManager" selected="Gradle.DijkstraTest.testShortestPath">
+    <configuration name="DijkstraTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -85,7 +92,55 @@
           <list>
             <option value=":lib:test" />
             <option value="--tests" />
-            <option value="&quot;org.spp.DijkstraTest.testSPP&quot;" />
+            <option value="&quot;org.spp.DijkstraTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="DijkstraTest.testNoPathAvailable" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":lib:test" />
+            <option value="--tests" />
+            <option value="&quot;org.spp.DijkstraTest.testNoPathAvailable&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="DijkstraTest.testPathToUnreachableNode" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":lib:test" />
+            <option value="--tests" />
+            <option value="&quot;org.spp.DijkstraTest.testPathToUnreachableNode&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -120,7 +175,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="DijkstraTest.whenSPPSolved_thenCorrect" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DijkstraTest.testShortestPath" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -133,7 +188,7 @@
           <list>
             <option value=":lib:test" />
             <option value="--tests" />
-            <option value="&quot;org.spp.DijkstraTest.whenSPPSolved_thenCorrect&quot;" />
+            <option value="&quot;org.spp.DijkstraTest.testShortestPath&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -146,9 +201,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.DijkstraTest.testShortestPath" />
+        <item itemvalue="Gradle.DijkstraTest.testNoPathAvailable" />
+        <item itemvalue="Gradle.DijkstraTest" />
+        <item itemvalue="Gradle.DijkstraTest.testPathToUnreachableNode" />
         <item itemvalue="Gradle.DijkstraTest.testSPPSuccess" />
-        <item itemvalue="Gradle.DijkstraTest.testSPP" />
-        <item itemvalue="Gradle.DijkstraTest.whenSPPSolved_thenCorrect" />
       </list>
     </recent_temporary>
   </component>

@@ -1,16 +1,10 @@
 package org.spp;
 
-import lombok.Data;
+import lombok.Builder;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.Map;
 
-@Data
-public class Graph {
-
-    private Set<Node> nodes = new HashSet<>();
-
-    public void addNode(Node nodeA) {
-        nodes.add(nodeA);
-    }
+@Builder(toBuilder = true)
+public record Graph(Map<String, List<Vector>> adjacentNodes){
 }

@@ -1,55 +1,86 @@
 package org.spp;
 
 import java.util.*;
-import java.util.Map.Entry;
 
 public class Dijkstra {
 
-    public static Graph calculateShortestPathFromSource(Graph graph, Node source) {
+    private final Graph graph;
 
-        source.setDistance(0);
+    public Dijkstra(Graph graph) {
+        this.graph = graph;
+    }
 
-        Set<Node> settledNodes = new HashSet<>();
-        Set<Node> unsettledNodes = new HashSet<>();
-        unsettledNodes.add(source);
+    public Route findShortestRoute(String sourceNode, String destinationNode) {
+
+        Map<String, Integer> distances = new HashMap<>();
+        Map<String, Vector> previousEdges = new HashMap<>();
+        Set<String> unsettledNodes = new HashSet<>(graph.adjacentNodes().keySet());
+
+        for (String node : graph.adjacentNodes().keySet()) {
+            distances.put(node, Integer.MAX_VALUE);
+        }
+        distances.put(sourceNode, 0);
 
         while (!unsettledNodes.isEmpty()) {
-            Node currentNode = getLowestDistanceNode(unsettledNodes);
+            String currentNode = getClosestNode(unsettledNodes, distances);
+            if (currentNode == null || distances.get(currentNode) == Integer.MAX_VALUE || currentNode.equals(destinationNode)) {
+                break;
+            }
             unsettledNodes.remove(currentNode);
-            for (Entry<Node, Integer> adjacencyPair : currentNode.getAdjacentNodes().entrySet()) {
-                Node adjacentNode = adjacencyPair.getKey();
-                Integer edgeWeigh = adjacencyPair.getValue();
 
-                if (!settledNodes.contains(adjacentNode)) {
-                    calculateMinimumDistance(adjacentNode, edgeWeigh, currentNode);
-                    unsettledNodes.add(adjacentNode);
-                }
-            }
-            settledNodes.add(currentNode);
-        }
-        return graph;
-    }
-
-    private static void calculateMinimumDistance(Node evaluationNode, Integer edgeWeigh, Node sourceNode) {
-        Integer sourceDistance = sourceNode.getDistance();
-        if (sourceDistance + edgeWeigh < evaluationNode.getDistance()) {
-            evaluationNode.setDistance(sourceDistance + edgeWeigh);
-            List<Node> shortestPath = new ArrayList<>(sourceNode.getShortestPath());
-            shortestPath.add(sourceNode);
-            evaluationNode.setShortestPath(shortestPath);
-        }
-    }
-
-    private static Node getLowestDistanceNode(Set<Node> unsettledNodes) {
-        Node lowestDistanceNode = null;
-        int lowestDistance = Integer.MAX_VALUE;
-        for (Node node : unsettledNodes) {
-            int nodeDistance = node.getDistance();
-            if (nodeDistance < lowestDistance) {
-                lowestDistance = nodeDistance;
-                lowestDistanceNode = node;
+            List<Vector> neighbors = graph.adjacentNodes().getOrDefault(currentNode, List.of());
+            for (Vector vector : neighbors) {
+                calculateMinimumDistance(vector, unsettledNodes, distances, currentNode, previousEdges);
             }
         }
-        return lowestDistanceNode;
+
+        return buildRoute(destinationNode, previousEdges, distances);
+    }
+
+    private void calculateMinimumDistance(Vector vector, Set<String> unsettledNodes, Map<String, Integer> distances, String currentNode, Map<String, Vector> previousEdges) {
+        String evaluationNode = vector.destinationNode();
+        if (!unsettledNodes.contains(evaluationNode)) return;
+
+        int newDistance = distances.get(currentNode) + vector.distance();
+
+        // Update distances to its neighbors if a shorter path is found.
+        if (newDistance < distances.get(evaluationNode)) {
+            distances.put(evaluationNode, newDistance);
+            previousEdges.put(evaluationNode , vector);
+        }
+    }
+
+    private Route buildRoute(String destinationNode, Map<String, Vector> previousEdges, Map<String, Integer> distances) {
+        // Build the Route
+        List<Vector> path = new ArrayList<>();
+        String currentNode = destinationNode;
+
+        while (previousEdges.containsKey(currentNode)) {
+            Vector edge = previousEdges.get(currentNode);
+            path.add(0, edge);
+            currentNode = edge.sourceNode();
+        }
+
+        // Handle No Route
+        if (distances.get(destinationNode) == Integer.MAX_VALUE) {
+            return Route.builder().route(List.of()).totalDistance(-1).build();
+        }
+
+        return Route.builder().route(path).totalDistance(distances.get(destinationNode)).build();
+    }
+
+    // Finds the unvisited node with the smallest distance.
+    private String getClosestNode(Set<String> unvisited, Map<String, Integer> distances) {
+        String closestNode = null;
+        int smallestDistance = Integer.MAX_VALUE;
+
+        for (String node : unvisited) {
+            int currentDistance = distances.getOrDefault(node, Integer.MAX_VALUE);
+            if (currentDistance < smallestDistance) {
+                smallestDistance = currentDistance;
+                closestNode = node;
+            }
+        }
+        return closestNode;
     }
 }
