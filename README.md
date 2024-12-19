@@ -8,4 +8,4 @@ https://duongs-notebook.gitbook.io/leet-code-stuffs
 ## Challenges
 Discover and reinforce missing knowledge.
 <br>
-[Challenges](./tree/main/Challenges/)
+[Challenges](./Challenges/)
