@@ -7,22 +7,19 @@ public class LinkedList<T> implements ILinkedList<T> {
     private Node<T> tail;
 
     public LinkedList() {
-        this.head = null;
-        this.current = null;
-        this.tail = null;
     }
 
     @Override
-    public LinkedList<T> add(T item) {
+    public LinkedList<T>  add(T item) {
         Node<T> newNode = new Node<>(item);
         if (head == null) {
             head = newNode;
-            current = head;
-            tail = head;
+            current = newNode;
         } else {
             tail.next = newNode;
-            tail = newNode;
         }
+        tail = newNode;
+
         return this;
     }
 
