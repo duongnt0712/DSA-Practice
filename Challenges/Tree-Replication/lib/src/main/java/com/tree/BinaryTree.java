@@ -102,9 +102,9 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
             return false;
         }
         int compareResult = value.compareTo(current.getValue());
-        return compareResult == 0 || compareResult < 0
+        return compareResult == 0 || ( compareResult < 0
                 ? containsNodeRecursive(current.getLeft(), value)
-                : containsNodeRecursive(current.getRight(), value);
+                : containsNodeRecursive(current.getRight(), value));
     }
 
 }
