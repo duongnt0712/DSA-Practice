@@ -8,7 +8,9 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
+    id("jacoco")
     id("io.freefair.lombok") version "8.10.2"
+    id ("org.sonarqube") version "6.0.1.5171"
 }
 val lombokVersion = "1.18.30"
 
@@ -45,4 +47,30 @@ java {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+
+    reports {
+        junitXml.required.set(true) // Enable XML reports
+    }
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required.set(true)
+        csv.required.set(false)
+    }
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "duongnt0712_DSA-Practice")
+        property("sonar.organization", "duongnt0712")
+        property( "sonar.host.url", "https://sonarcloud.io")
+        property("sonar.core.codeCoveragePlugin", "jacoco")
+        property("sonar.sources", "src/main")
+        property("sonar.tests", "src/test")
+        property("sonar.junit.reportPaths", "build/test-results/test")
+        property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
+    }
 }
