@@ -2,7 +2,7 @@ package com.tree;
 
 import com.tree.exception.DuplicateItemException;
 
-import java.util.function.BiFunction;
+import java.util.Iterator;
 
 public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
 
@@ -74,21 +74,6 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
     }
 
     @Override
-    public <R> R transform(R initValue, BiFunction<R, T, R> function) {
-        return transformRecursive(root, initValue, function);
-    }
-
-    private <R> R transformRecursive(Node<T> node, R initValue, BiFunction<R, T, R> function) {
-        if (node == null) {
-            return initValue;
-        }
-
-        R leftResult = transformRecursive(node.getLeft(), initValue, function);
-        R currentResult = function.apply(leftResult, node.getValue());
-        return transformRecursive(node.getRight(), currentResult, function);
-    }
-
-    @Override
     public T root() {
         return root == null ? null : root.getValue();
     }
@@ -107,4 +92,8 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
                 : containsNodeRecursive(current.getRight(), value));
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return new InOrderIterator<>(root);
+    }
 }

@@ -58,8 +58,7 @@ class BinaryTreeTest {
     void testTransform() {
         tree.add(5).add(3).add(7);
 
-        BinaryOperator<Integer> sumFunction = Integer::sum;
-        int result = tree.transform(0, sumFunction);
+        int result = tree.transform(0, Integer::sum);
 
         assertEquals(15, result);
     }
@@ -68,8 +67,7 @@ class BinaryTreeTest {
     void testReduceMax() {
         tree.add(10).add(5).add(15).add(20);
 
-        BinaryOperator<Integer> maxOperator = Integer::max;
-        int max = tree.reduce(Integer.MIN_VALUE, maxOperator);
+        int max = tree.reduce(Integer.MIN_VALUE, Integer::max);
 
         assertEquals(20, max);
     }
@@ -95,4 +93,5 @@ class BinaryTreeTest {
         assertTrue(list.containsAll(List.of(5, 10, 15)));
         assertEquals(3, list.size());
     }
+
 }

@@ -6,7 +6,7 @@ import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-public interface Tree<T> {
+public interface Tree<T> extends Iterable<T> {
 
     Tree<T> add(T i);
 
@@ -14,7 +14,13 @@ public interface Tree<T> {
 
     T root();
 
-    <R> R transform(R initValue, BiFunction<R,T,R> function);
+    default  <R> R transform(R initValue, BiFunction<R, T, R> function) {
+        R value = initValue;
+        for (T t : this) {
+            value = function.apply(value, t);
+        }
+        return value;
+    }
 
     /**
      * Sonar: Prefer BinaryOperator<T> instead of BiFunction<T,T,T>.
