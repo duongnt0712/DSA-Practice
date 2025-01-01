@@ -1,10 +1,13 @@
 package com.tree.models;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Iterator;
 import java.util.Stack;
 
 public class InOrderIterator<T extends Comparable<T>> implements Iterator<T> {
-    private final Stack<Node<T>> stack = new Stack<>();
+
+    private final Deque<Node<T>> stack = new ArrayDeque<>();
 
     public InOrderIterator(Node<T> root) {
         pushLeftBranch(root);
