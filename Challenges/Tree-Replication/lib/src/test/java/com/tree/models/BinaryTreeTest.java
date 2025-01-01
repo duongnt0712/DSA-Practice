@@ -1,12 +1,11 @@
-package com.tree;
+package com.tree.models;
 
-import com.tree.exception.DuplicateItemException;
+import com.tree.exceptions.DuplicateItemException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BinaryOperator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

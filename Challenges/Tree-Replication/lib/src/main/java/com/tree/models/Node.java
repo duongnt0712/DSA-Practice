@@ -1,4 +1,4 @@
-package com.tree;
+package com.tree.models;
 
 import lombok.Data;
 

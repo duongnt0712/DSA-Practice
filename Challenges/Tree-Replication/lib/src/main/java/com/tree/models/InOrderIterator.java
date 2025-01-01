@@ -1,4 +1,4 @@
-package com.tree;
+package com.tree.models;
 
 import java.util.Iterator;
 import java.util.Stack;

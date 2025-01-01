@@ -1,4 +1,4 @@
-package com.tree.exception;
+package com.tree.exceptions;
 
 /**
  * Throw DuplicateItemException if the Item is existing

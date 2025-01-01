@@ -1,6 +1,6 @@
-package com.tree;
+package com.tree.models;
 
-import com.tree.exception.DuplicateItemException;
+import com.tree.exceptions.DuplicateItemException;
 
 import java.util.Iterator;
 
@@ -38,6 +38,7 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
         root = removeRecursive(root, value);
         return this;
     }
+
     private Node<T> removeRecursive(Node<T> current, T value) {
         if (current == null) {
             return null;
@@ -55,6 +56,7 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
 
         return current;
     }
+
     private Node<T> handleNodeRemoval(Node<T> current) {
         if (current.getLeft() == null) {
             return current.getRight();
