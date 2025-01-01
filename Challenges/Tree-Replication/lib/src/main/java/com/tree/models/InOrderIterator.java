@@ -3,11 +3,10 @@ package com.tree.models;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Iterator;
-import java.util.Stack;
+import java.util.NoSuchElementException;
 
 public class InOrderIterator<T extends Comparable<T>> implements Iterator<T> {
-
-    private final Deque<Node<T>> stack = new ArrayDeque<>();
+    private final Deque<Node<T>> deque = new ArrayDeque<>();
 
     public InOrderIterator(Node<T> root) {
         pushLeftBranch(root);
@@ -15,21 +14,28 @@ public class InOrderIterator<T extends Comparable<T>> implements Iterator<T> {
 
     private void pushLeftBranch(Node<T> node) {
         while (node != null) {
-            stack.push(node);
+            deque.push(node);
             node = node.getLeft();
         }
     }
 
     @Override
     public boolean hasNext() {
-        return !stack.isEmpty();
+        return !deque.isEmpty();
     }
 
     @Override
     public T next() {
-        Node<T> node = stack.pop();
+        if (!hasNext()) {
+            throw new NoSuchElementException();
+        }
+        
+        Node<T> node = deque.pop();
         T value = node.getValue();
-        pushLeftBranch(node.getRight());
+
+        if (node.getRight() != null) {
+            pushLeftBranch(node.getRight());
+        }
         return value;
     }
 }
